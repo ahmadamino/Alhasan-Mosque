@@ -51,6 +51,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(2),
+                      border: InputBorder.none,
+                      hintText: 'password',
+                      icon: Icon(Icons.password),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
