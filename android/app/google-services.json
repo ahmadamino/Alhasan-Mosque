@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "236867861221",
+    "project_id": "mosque-d8feb",
+    "storage_bucket": "mosque-d8feb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236867861221:android:1337f97eb726282e52720c",
+        "android_client_info": {
+          "package_name": "com.alehsan.alhasen_mosque"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236867861221-qopumk4kb6esl8hrosd24kcg5jaalb10.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKt4peGn699WpWmzs2LBpWEP0mQkgt-aI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236867861221-qopumk4kb6esl8hrosd24kcg5jaalb10.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
