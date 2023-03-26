@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,28 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text
+            .trim()); //trim مشان يعطي الفورمات الصحيحة بدون علامات الاقباس
+  }
+
+  void openSignupScreen() {
+    Navigator.of(context).pushReplacementNamed('signupScreen');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose(); //مشان يعطل الكونترولر اذا ما عم بستخدم
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,8 +56,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontSize: 20,
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -42,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: TextField(
+                    controller: _emailController,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(2),
                       border: InputBorder.none,
@@ -51,8 +78,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -60,11 +90,39 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: TextField(
+                    controller: _passwordController,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(2),
                       border: InputBorder.none,
                       hintText: 'password',
                       icon: Icon(Icons.password),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20,right: 20,
+                ),
+                child: GestureDetector(
+                  //مشان اخلي الزر يكبس
+                  onTap: signIn,
+                  child: Container(
+                    padding: EdgeInsets.all(10), //لتكبير الزر
+                    decoration: BoxDecoration(
+                      color: Colors.amber[900],
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Center(
+                      // مشان تخلي الزر متل اللي فوقه
+                      child: Text(
+                        'تسجيل الدخول',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
                 ),
